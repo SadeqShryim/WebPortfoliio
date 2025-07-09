@@ -1,6 +1,5 @@
 'use client';
-
-import { motion } from "framer-motion"
+import { motion } from 'framer-motion';
 import Link from "next/link"
 import { ArrowLeft, BarChart3 } from "lucide-react"
 
