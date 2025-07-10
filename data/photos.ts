@@ -7,9 +7,13 @@ export type Photo = {
 
 export const photos: Photo[] = [
   {
-    caption: "Sunset over Lake Erie",
-    thumb: "/photos/thumbs/erie-sunset.jpg",
-    full: "/photos/full/erie-sunset.jpg",
+    caption: "Skipping stones on Lake Michigan",
+    thumb: "/photos/thumbs/beach-thumb.jpg",
+    full:  "/photos/full/beach-full.jpg",
   },
-  // 👉 add more photos here
+  {
+    caption: "Currently reading: Reality Transurfing",
+    thumb: "/photos/thumbs/book-thumb.jpg",
+    full:  "/photos/full/book-full.jpg",
+  },
 ];
