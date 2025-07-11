@@ -1,0 +1,13 @@
+# ----- Runtimes -----
+Microsoft.NodeJS.LTS ARM64        # Node v20 LTS for Windows/ARM
+OpenJS.NodeJS                     # Fallback mirror (winget auto-selects ARM build)
+Python.Python.3.11 ARM64          # Needed for Pillow / image tools
+Git.Git                            # Universal; installer detects arch
+
+# ----- Global npm CLIs -----
+pnpm@9               # Faster workspace package manager
+typescript@5.4.5     # TS compiler (optional globally)
+tailwindcss@3.4.4    # CLI for JIT builds outside Next.js
+
+# ----- Python packages (ARM wheels exist) -----
+pillow==10.3.0       # Used for quick thumbnail resizing

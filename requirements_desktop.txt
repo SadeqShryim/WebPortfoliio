@@ -1,0 +1,12 @@
+# ----- Runtimes -----
+Microsoft.NodeJS.LTS              # Node v20 LTS x64
+Python.Python.3.11                # CPython x64
+Git.Git
+
+# ----- Global npm CLIs -----
+pnpm@9
+typescript@5.4.5
+tailwindcss@3.4.4
+
+# ----- Python packages -----
+pillow==10.3.0
