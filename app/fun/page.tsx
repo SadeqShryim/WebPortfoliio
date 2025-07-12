@@ -1,61 +1,59 @@
 'use client';
+
+import Image from 'next/image';
 import { motion } from 'framer-motion';
-import Link from "next/link"
-import { ArrowLeft, Gamepad2 } from "lucide-react"
+import { facts } from '@/data/facts';
+import { photos } from '@/data/photos';
 
 export default function FunPage() {
   return (
-    <div className="min-h-screen bg-black text-white">
-      <div className="container mx-auto px-4 py-8">
+    <section className="mx-auto max-w-6xl px-4 py-12 space-y-12">
+      {/* ----- Fun facts block ----- */}
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="bg-gray-900/60 backdrop-blur-md rounded-xl p-8 border border-gray-800"
+      >
+        <h1 className="text-3xl font-bold mb-6">A few things about me</h1>
+        <ul className="list-disc list-inside space-y-2 text-gray-300">
+          {facts.map((f) => (
+            <li key={f}>{f}</li>
+          ))}
+        </ul>
+      </motion.div>
+
+      {/* ----- Masonry photo gallery ----- */}
+      {photos.length > 0 ? (
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4"
         >
-          <Link
-            href="/"
-            className="inline-flex items-center text-red-500 hover:text-red-400 transition-colors duration-200"
-          >
-            <ArrowLeft className="w-5 h-5 mr-2" />
-            Back to profiles
-          </Link>
+          {photos.map((ph) => (
+            <a
+              key={ph.full}
+              href={ph.full}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="break-inside-avoid group"
+            >
+              <Image
+                src={ph.thumb}
+                alt={ph.caption}
+                width={400}
+                height={400}
+                className="w-full mb-4 rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+                sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
+              />
+              <p className="text-gray-400 text-sm">{ph.caption}</p>
+            </a>
+          ))}
         </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-center max-w-4xl mx-auto"
-        >
-          <div className="flex justify-center mb-8">
-            <div className="p-6 bg-red-600/20 rounded-full">
-              <Gamepad2 className="w-16 h-16 text-red-500" />
-            </div>
-          </div>
-
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-            Welcome to Fun Profile
-          </h1>
-
-          <p className="text-xl text-gray-400 leading-relaxed">
-            Explore my personal projects, creative endeavors, and hobbies. This is the more casual side where I
-            experiment with new technologies and share my passions.
-          </p>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="mt-12 p-8 bg-gray-900/50 rounded-2xl border border-gray-800"
-          >
-            <p className="text-gray-300">
-              Content coming soon... This section will feature personal projects, creative experiments, and fun side
-              projects that showcase my interests.
-            </p>
-          </motion.div>
-        </motion.div>
-      </div>
-    </div>
-  )
+      ) : (
+        <p className="text-gray-500">No photos yet — check back soon!</p>
+      )}
+    </section>
+  );
 }
