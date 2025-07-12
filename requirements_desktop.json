@@ -1,0 +1,9 @@
+{
+  "$schema": "https://aka.ms/winget-packages.schema.2.0.json",
+  "Sources": [ { "Packages": [] } ],
+  "Packages": [
+    { "PackageIdentifier": "Microsoft.NodeJS.LTS" },   // Node v20 x64
+    { "PackageIdentifier": "Python.Python.3.11" },     // CPython 3.11 x64
+    { "PackageIdentifier": "Git.Git" }                 // Git for Windows
+  ]
+}
