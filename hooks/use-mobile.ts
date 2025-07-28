@@ -1,18 +1,15 @@
-// hooks/use-mobile.ts
 "use client";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export function useIsMobile(breakpoint = 768) {
-  const [isMobile, setIsMobile] = useState<boolean | undefined>(undefined);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const mql = window.matchMedia(`(max-width: ${breakpoint - 1}px)`);
-    const handler = () => setIsMobile(window.innerWidth < breakpoint);
-
-    mql.addEventListener("change", handler);
-    handler(); // initial
-    return () => mql.removeEventListener("change", handler);
+    const handleResize = () => setIsMobile(window.innerWidth < breakpoint);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, [breakpoint]);
 
-  return Boolean(isMobile);
+  return isMobile;
 }
